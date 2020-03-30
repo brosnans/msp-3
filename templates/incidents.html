@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block content %}
+
+    {% for incident in incidents %}
+    {{incident.incident_name}}
+    {{incident.category_name}}
+    {{incident.incident_description}}
+    {{incident.first_aid_required}}
+    {{incident.investigation_due}}
+    {% endfor %}
+
+{% endblock %}
