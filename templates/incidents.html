@@ -2,7 +2,6 @@
 
 {% extends 'base.html' %}
 {% block content %}
-
     {% for incident in incidents %}
     {{incident.incident_name}}
     {{incident.category_name}}
@@ -10,7 +9,6 @@
     {{incident.first_aid_required}}
     {{incident.investigation_due}}
     {% endfor %}
-
 <ul class="collapsible" data-collapsible="accordion">
     {% for incident in incidents %}
         <li>
@@ -19,5 +17,4 @@
             <div class="collapsible-body"><span>{{incident.incident_description}}</span></div>
         </li>
     </ul>
-
 {% endblock %}
