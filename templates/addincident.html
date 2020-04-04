@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h3> Add Incident </h3>
 <div class="row">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="category" name="category_name">
+                  <option value="" disabled selected>Choose Category</option>
+                  {% for cat in categories %}
+                      <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                  {% endfor %}
+                </select>
+                    <label>Incident Category</label>
+                </div>
+            </div>
     <form  action="" method="POST" class="col s12">
         <!-- Incident Description -->
         <div class="row">
