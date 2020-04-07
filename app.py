@@ -26,6 +26,14 @@ def insert_incident():
     incidents.insert_one(request.form.to_dict())
     return redirect(url_for('get_incidents'))
 
+@app.route('/edit_incident/<incident_id>')
+def edit_incident(incident_id):
+    the_incident =  mongo.db.incidents.find_one({"_id": ObjectId(incident_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('editincident.html', incident=the_incident,
+                           categories=all_categories)
+
+
 if __name__ == '__main__':
     app.run(host=(os.environ.get('IP', '0.0.0.0')),
             port=int(os.environ.get('PORT', 5000)),
