@@ -10,7 +10,11 @@
                     <select id="category" name="category_name">
                   <option value="" disabled selected>Choose Category</option>
                   {% for cat in categories %}
+                  {% if cat.category_name == task.category_name %}
+                      <option value="{{cat.category_name}}" selected >{{cat.category_name}}</option>
+                        {% else %}
                       <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                      {% endif %}
                   {% endfor %}
                 </select>
                     <label>Incident Category</label>
@@ -18,14 +22,14 @@
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
-                <input id="affected_person" name="affected_person" type="text">
+                <input id="affected_person" name="affected_person" type="text" class="validate" value="{{incident.affected_person}}">
                 <label for="icon_prefix">Affected Person</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <textarea name="incident_description" id="incident_description" class="materialize-textarea"></textarea>
+                <textarea name="incident_description" id="incident_description" class="materialize-textarea">{{incident.affected_person}}</textarea>
                 <label for="icon_telephone">Incident Description</label>
             </div>
         </div>
@@ -39,17 +43,33 @@
         <div class="row">
             <div class="switch">
                 <label>
+                {% if incident.first_aid_required %}
+                  <input id="first_aid_required" name="first_aid_required" type="checkbox" checked>
+                 {% else %}
                   <input id="first_aid_required" name="first_aid_required" type="checkbox">
+                 {% endif %} 
                   <span class="lever"></span>
                   First Aid Required
                 </label>
             </div>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Incident
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit Incident
                 <i class="material-icons right">playlist_add</i>
              </button>
         </div>
     </form>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    investigation_due = Date.parse('{{incident.investigation_due}}');
+    $('#investigation_due').pickadate('picker').set('select', investigation_due, { format: 'dd/mm/yyyy' }).trigger('change')
+});
+
+
+</script>
+
 {% endblock %}
