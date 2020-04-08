@@ -33,6 +33,19 @@ def edit_incident(incident_id):
     return render_template('editincident.html', incident=the_incident,
                            categories=all_categories)
 
+@app.route('/update_incident/<incident_id>', methods=["POST"])
+def update_incident(incident_id):
+    incident = mongo.db.incident
+    incident.update( {'_id': ObjectId(incident_id)},
+    {
+        'category_name':request.form.get('category_name'),
+        'affected_person':request.form.get('affected_person'),
+        'incident_description': request.form.get('incident_description'),
+        'investigation_due': request.form.get('investigation_due'),
+        'first_aid_required':request.form.get('first_aid_required')
+    })
+    return redirect(url_for('get_incidents'))
+
 
 if __name__ == '__main__':
     app.run(host=(os.environ.get('IP', '0.0.0.0')),
