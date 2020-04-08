@@ -30,7 +30,7 @@ def insert_incident():
 def edit_incident(incident_id):
     the_incident =  mongo.db.incidents.find_one({"_id": ObjectId(incident_id)})
     all_categories =  mongo.db.categories.find()
-    return render_template('editincident.html', incident=the_incident,
+    return render_template("editincident.html", incident=the_incident,
                            categories=all_categories)
 
 @app.route('/update_incident/<incident_id>', methods=["POST"])
