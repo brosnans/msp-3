@@ -16,7 +16,7 @@ def get_incidents():
     incidents=mongo.db.incidents.find())
 
 @app.route('/add_incident')
-def add_task():
+def add_incident():
     return render_template("addincident.html", 
     categories=mongo.db.categories.find())
 
