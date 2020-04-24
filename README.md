@@ -2,7 +2,7 @@
 
 *Developer: brosnans*
 
-App available at
+App available at https://incident-manager-flask-mongo.herokuapp.com/
 
  - Project Brief
  - Technologies
@@ -98,6 +98,95 @@ Database Management
 |                                                             | Enter an accident                                                     | Accident details input                          |
 |                                                             | Return incorrect answer                                               | Submit report button                            |
 |                                                             | Store accident/ incident report details                               |                                                 |
-|                                                             | Show list of accident/ incident reports                               | Leaderboard                                     |
+|                                                             | Show list of accident/ incident reports                               |                                                 |
 |                                                             |                                                                       |                                                 |
 |                                                             |                                                                       |                                                 |
+
+#### Structure
+
+| Focus                                                       | Interaction Design                                                           | Information Architecture                                                                |
+|-------------------------------------------------------------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| _How is the information structured?_                        | _Where am I? / How did I get here? / What can I do here? / Where can I go?_  | _Organizational / Navigational schemas (tree / nested list / hub and spoke / dashboard)_|
+|                                                             | Incident Log > View incident details                                         | Tree structure                                                                          |
+| _How is it logically grouped?_                              | Add New Incident > REport Details of Incident                                |                                                                                         |
+|                                                             | Manage Categories > Add Incident Categories                                  |                                                                                         |
+|                                                             | Mark Incident Closed > End                                                   |                                                                                         |
+|                                                             |                                                                              |                                                                                         |
+
+#### Skeleton
+
+| Focus                                                         | Interface Design         | Navigational Design  | Information Design  |
+|---------------------------------------------------------------|--------------------------|----------------------|---------------------|
+| _How will the information be represented?_                    | See wireframes           |                      |                     |
+| _How will the user navigate to the information and features?_ |                          |                      |                     |
+|                                                               |                          |                      |                     |
+
+#### Surface
+
+| Focus                                                       | Visual Design                       |
+|-------------------------------------------------------------|-------------------------------------|
+| What will the finished product look like?                   |                                     |
+| What colours, typography and design elements will be used?  |                                     |
+|                                                             |                                     |
+
+### 6 Wireframes
+
+![Wireframes]()
+
+### 7 Testing
+
+I used the **Test Before** approach to Test Driven Development, using Python's **unittest** class.
+
+I created a file called test_incident_manager.py and wrote the first test (below) which failed.  Then I wrote a function in run.py to make the test pass.  I continued in this way until I had all of the functionality required to build the game.
+
+---
+
+---
+
+[**HTML Validator Results**](https://validator.w3.org/nu/?doc=https%3A%2F%2Fhobbit-riddle-game.herokuapp.com%2F)
+
+[**CSS Validator Results**](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fhobbit-riddle-game.herokuapp.com&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+### 8 Heroku Deployment
+
+1. Create a new app 'incident-manager-flask-mongo' on heroku.com
+
+2. Install [Heroku CLI](https://devcenter.heroku.com/categories/command-line)
+    - $ brew install heroku/brew/heroku
+
+3. Login to heroku with email abd password
+    - $ heroku login
+
+4. Check app is there
+    - $ heroku apps
+
+5. Add heroku remote
+    - $ heroku git:remote -a incident-manager-flask-mongo
+
+6. Add Procfile (this tells heroku what to do with the project)
+    - $ echo web: python app.py > Procfile
+
+7. Git commit and push to heroku remote
+    - $ git add Procfile
+    - $ git ci -m 'Add Profile for heroku deployment'
+    - $ git push -u heroku master
+
+8. Set up dynos
+    - $ heroku ps:scale web=1
+
+9. Setup config variables on heroku dashboard
+
+    ![Config Variables](https://raw.githubusercontent.com/sarahloh/p3-riddle-game/master/static/images/readme/config-vars.png)
+
+10. Restart dynos
+
+    ![Restart Dynos](https://raw.githubusercontent.com/sarahloh/p3-riddle-game/master/static/images/readme/restart-dynos.png)
+
+### 9 How To Deploy Locally
+
+```console
+$ git clone git@github.com/brosnans/msp-3
+$ cd msp-3
+$ pip3 install -r requirements.txt
+$ python3 app.py
+```
