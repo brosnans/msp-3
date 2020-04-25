@@ -41,7 +41,7 @@ def update_incident(incident_id):
         'category_name':request.form.get('category_name'),
         'affected_person':request.form.get('affected_person'),
         'incident_description': request.form.get('incident_description'),
-        'investigation_due': request.form.get('investigation_due'),
+        'incident_occurred_date': request.form.get('incident_occurred_date'),
         'first_aid_required':request.form.get('first_aid_required')
     })
     return redirect(url_for('get_incidents'))
