@@ -55,7 +55,7 @@ Database Management
 
 **Editor** - [Visual Studio Code](https://gitpod.io)
 
-**Language** - [Python3](https://www.python.org)
+**Language** - [Python3](https://www.python.org), [HTML5](https://en.wikipedia.org/wiki/HTML), [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 
 **Microframework** - [Flask](http://flask.pocoo.org)
 
